@@ -1,0 +1,66 @@
+.card {
+    display: -webkit-box;
+}
+.add-item-button {
+    position: absolute;
+    bottom: 0;
+    right: 3px;
+}
+
+@media screen and (max-width: 576px) {
+    .btn {
+        font-size: .65rem;
+    }
+    .product-container {
+        margin-left: 90px;
+        .image-container {
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .product-name {
+            font-size: .95rem;
+        }
+        .product-description-container {
+            margin-bottom: 30px !important;
+            .product-description {
+                font-size: .85em;
+            }
+        }
+    }
+    .form-inline {
+        margin-top: .5rem;
+    }
+    .btn-group {
+        margin-top: .5rem;
+    }
+    .card {
+        display: inline-flex;
+        .col-2, 
+        .col-10 {
+            max-width: 100%;
+        }
+        .col-10 h4 {
+            overflow: auto;
+        }
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .btn {
+        font-size: .5rem;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .product-container {
+        margin-left: 80px;
+    }
+    .btn-group {
+        margin-top: .5rem;
+        .btn {
+            font-size: .65rem;
+            padding-left: .5rem;
+            padding-right: .5rem;
+        }
+    }
+}
+

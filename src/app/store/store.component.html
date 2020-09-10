@@ -1,0 +1,69 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col border-bottom bg-light fixed-top">
+            <a class="navbar-brand text-dark">Online Store</a>
+            <app-cart-summary></app-cart-summary>
+        </div>
+    </div>
+    <div class="row text-white">
+        <div class="col-3 p-2 col-2 fixed-top mt-5">
+            <button class="btn btn-block btn-outline-secondary" (click)="changeCategory(); homePage()">
+                HOME
+            </button>
+            <button *ngFor="let cat of categories"
+                    class="btn btn-outline-secondary btn-block"
+                    [class.active]="cat === selecteCategory"
+                    (click)="changeCategory(cat)"
+                    [disabled]="selectedPage !== 1">
+                    {{ cat }}
+            </button>
+            <!-- Admin Button -->
+            <button class="btn btn-block btn-outline-danger mt-3"
+                    routerLink="/admin">
+                Admin
+            </button>
+        </div>
+        <div class="col-9 p-2 offset-sm-3 mt-5 product-container">
+            <div *ngFor="let product of products"
+                class="card mb-1 p-1 bg-light">
+                <div class="col-2 image-container">
+                    <img [src]="product.image" class="card-img" [alt]="product.name">
+                </div>
+                <div class="col-10 p-2">
+                    <h4 class="text-dark product-name">
+                        {{ product.name}}
+                        <span class="badge badge-pill badge-primary float-right">
+                            {{ product.price | currency: "USD": "symbol": "2.2-2"}}
+                        </span>
+                    </h4>
+                    <div class="card-text bg-white p-1 text-dark mb-5 product-description-container">
+                        <p class="product-description">
+                            {{ product.description }}
+                        </p>
+                    </div>
+                    <button class="btn btn-warning btn-small float-right mt-2 add-item-button"
+                                (click)="addProductToCart(product)">
+                                Add To Cart
+                    </button>
+                </div>
+            </div>
+            <div class="form-inline float-left mr-1">
+                <select class="form-control" 
+                    [value]="productsPerPage"
+                    (change)="changePageSize($event.target.value)">
+                    <option value="4">Four Products Per Page</option>
+                    <option value="6">Six Products Per Page</option>
+                    <option value="8">Eight Products Per Page</option>
+                </select>
+            </div>
+            <div class="btn-group float-right">
+                <button *ngFor="let page of pageNumbers" 
+                    (click)="changePage(page); scrollToTop()" 
+                    class="btn btn-outline-secondary mr-1"
+                    [class.active]="page === selectedPage">
+                    {{ page }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
